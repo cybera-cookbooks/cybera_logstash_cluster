@@ -9,5 +9,5 @@ if node[:logstash][:broker]
     action :set_permissions
   end
 end
-include_recipe "recipe[java]"
-include_recipe "recipe[cybera_logstash]"
+include_recipe "java"
+include_recipe "cybera_logstash"

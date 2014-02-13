@@ -5,4 +5,8 @@ run_list(
 )
 
 default_attributes()
-override_attributes()
+override_attributes(
+  elasticsearch: {
+    version: "1.0.0"
+  }
+)
