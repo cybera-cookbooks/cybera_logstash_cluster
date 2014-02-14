@@ -3,7 +3,8 @@
 # Need to set up volumes (assuming running on OpenStack).... maybe worth grabbing the OpenStack cookbook from Moodle Stuff
 
 # We have the volumes mounted with a FS, so now we need to create an array of paths that will be used as nodes for elasticsearch
-volumes = []
+#this needs to be done dynamically, but this will get us off the ground for now
+volumes = ["/elasticsearch/volume_1"]
 node.set[:elasticsearch][:paths][:data] = volumes unless volumes.empty?
 
 

@@ -9,5 +9,17 @@ if node[:logstash][:broker]
     action :set_permissions
   end
 end
+
+# get elastic search host
+elasticsearch_nodes = partial_search(:node, "role:elasticsearch",
+  :keys => {
+    'fqdn'     => [ 'fqdn' ],
+    'ipaddress' => [ 'ipaddress' ]
+    }
+  )
+
+node.set[:logstash][:config][:outputs][:elasticsearch][:variables][:host] = elasticsearch_nodes.first['ipaddress']
+
+
 include_recipe "java"
 include_recipe "cybera_logstash"

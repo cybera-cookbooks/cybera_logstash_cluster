@@ -1,6 +1,6 @@
 return unless node[:roles].include?("kibana")
-
-default[:kibana][:webserver_port] = (default[:kibana][:ssl][:enabled] ? 443 : 80)
+default[:kibana][:ssl][:enabled] = node[:ssl][:enabled]
+default[:kibana][:webserver_port] = (node[:kibana][:ssl][:enabled] ? 443 : 80)
 
 elasticsearch_nodes = partial_search(:node, 'role:elasticsearch', 
   keys: {
