@@ -23,4 +23,10 @@ if node[:logstash][:broker][:type] == "rabbitmq"
   default[:rabbitmq][:ssl_cert]   = "#{node[:ssl][:path]}/cert.pem"
   default[:rabbitmq][:ssl_key]    = "#{node[:ssl][:path]}/key.pem"
   default[:rabbitmq][:ssl_verify] = "verify_none"
+
+  default[:logstash][:config][:inputs][:rabbitmq][:variables][:host] = node[:logstash][:broker][:ipaddress]
+  default[:logstash][:config][:inputs][:rabbitmq][:variables][:port] = node[:logstash][:broker][:port]
+  default[:logstash][:config][:inputs][:rabbitmq][:variables][:user] = node[:rabbitmq][:default_user]
+  default[:logstash][:config][:inputs][:rabbitmq][:variables][:password] = node[:rabbitmq][:default_pass]
+  default[:logstash][:config][:inputs][:rabbitmq][:variables][:ssl_enabled] = node[:rabbitmq][:ssl]
 end
