@@ -4,7 +4,7 @@ license          'All rights reserved'
 name             'cybera_logstash_cluster'
 description      'Installs/Configures Logstash, Elastic Search, and Kibana for Cybera'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.1'
+version          '0.2.2'
 
 recipe "default",         ""
 recipe "elasticsearch",   ""

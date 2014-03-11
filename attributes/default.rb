@@ -4,6 +4,10 @@ default.java[:jdk_version] = '7'
 # SSL
 default[:ssl][:enabled]     = false
 default[:ssl][:path]        = "/etc/ssl/myssl"
-default[:ssl][:cert_name]   = "mycert.crt"
-default[:ssl][:cacert_name] = "mycacert.crt"
-default[:ssl][:key_name]    = "mykey.key"
+default[:ssl][:cert_name]   = "cert.crt"
+default[:ssl][:cacert_name] = "cacert.crt"
+default[:ssl][:key_name]    = "key.key"
+
+# Logstash globally needed attributes
+default[:logstash][:broker][:type] = "rabbitmq"
+default[:logstash][:broker][:port] = 5671
