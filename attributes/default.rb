@@ -1,5 +1,8 @@
 # Java 7 is currently recomended for Elastic Search
 default.java[:jdk_version] = '7'
+default[:java][:oracle][:accept_oracle_download_terms] = true
+default[:java][:accept_license_agreement] = true
+default[:java][:install_flavor] = "oracle"
 
 # SSL
 default[:ssl][:enabled]     = false

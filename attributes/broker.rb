@@ -1,4 +1,4 @@
-return unless node[:roles].include?("broker")
+return unless node[:roles].include?("logstash_broker")
 
 if node[:logstash][:broker][:type] == "rabbitmq"
   # RabbitMQ attributes (only needed if using RabbitMQ as the broker)

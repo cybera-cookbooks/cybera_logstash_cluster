@@ -5,7 +5,7 @@ class Chef::Recipe
 end
 
 # drop off certs
-if node[:ssl][:enabled] and (node[:roles].include? "kibana" or node[:roles].include? "broker")
+if node[:ssl][:enabled] and (node[:roles].include? "kibana" or node[:roles].include? "logstash_broker")
   install_dir = node[:ssl][:path]
   directory install_dir do
     owner "root"
@@ -53,4 +53,4 @@ end
 include_recipe "cybera_logstash_cluster::elasticsearch"   if node[:roles].include? "elasticsearch"
 include_recipe "cybera_logstash_cluster::kibana"          if node[:roles].include? "kibana"
 include_recipe "cybera_logstash_cluster::logstash_server" if node[:roles].include? "logstash_server"
-include_recipe "cybera_logstash_cluster::broker"          if node[:roles].include? "broker"
+include_recipe "cybera_logstash_cluster::broker"          if node[:roles].include? "logstash_broker"

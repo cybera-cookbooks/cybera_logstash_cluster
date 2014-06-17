@@ -10,3 +10,7 @@ default.elasticsearch.path[:data] = ["/elasticsearch/volume_1"]
 
 default.elasticsearch.nginx[:allow_cluster_api] = true
 default.elasticsearch.nginx[:passwords_file] = "#{default.elasticsearch.path.conf}/passwords"
+
+default.elasticsearch[:custom_config] = {
+  "indices.fielddata.cache.size" => "50%"
+}
