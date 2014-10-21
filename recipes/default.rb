@@ -22,9 +22,11 @@ if node[:ssl][:enabled] and (node[:roles].include? "kibana" or node[:roles].incl
     cacert_content = cert['cacert']
   else
     # if we're using a Chef server then we use a keychain
-    key_content = keychain_key_by_name("logstash-ssl-key")
-    cert_content = keychain_key_by_name("logstash-ssl-cert")
-    cacert_content = keychain_key_by_name("logstash-ssl-cacert")
+    secret = Chef::EncryptedDataBagItem.load_secret
+    logstash_ssl = Chef::EncryptedDataBagItem.load("logstash-cluster", "ssl", secret)
+    key_content = logstash_ssl["server"]["key"]
+    cert_content = logstash_ssl["server"]["cert"]
+    cacert_content = logstash_ssl["server"]["cacert"]
   end
 
   file "#{install_dir}/#{node[:ssl][:key_name]}" do
