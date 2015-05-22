@@ -50,7 +50,5 @@ if node[:ssl][:enabled] and (node[:roles].include? "kibana" or node[:roles].incl
   end
 end
 
-include_recipe "cybera_logstash_cluster::elasticsearch"   if node[:roles].include? "elasticsearch"
-include_recipe "cybera_logstash_cluster::kibana"          if node[:roles].include? "kibana"
 include_recipe "cybera_logstash_cluster::logstash_server" if node[:roles].include? "logstash_server"
 include_recipe "cybera_logstash_cluster::broker"          if node[:roles].include? "logstash_broker"
